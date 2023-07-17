@@ -6,8 +6,9 @@
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 18px;
     margin-bottom: 20px;
+    font-weight: 900;
 }
 
 .search-container {
@@ -20,14 +21,21 @@ h1 {
     width: 70%;
     padding: 10px;
     font-size: 20px;
+    background:#ddd;
+    border:1px solid #222;
+    box-shadow:3px 3px 0 #222;
 }
 
 #search-button {
+    transform: rotate(2deg);
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 5px;
     font-family: "rock salt", cursive;
     font-size: 14px;
+    background:#ddd;
+    border:1px solid #222;
+    box-shadow:3px 3px 0 #222;
 }
 
 #search-results {
@@ -36,7 +44,8 @@ h1 {
 }
 
 .bubble {
-    max-width: 500px;
+  border-radius: 5px;
+  max-width: 500px;
   /* give ample whitespace around and inside of the container */
   margin: 2rem 0;
   padding: 0.2rem 1.25rem;
@@ -49,7 +58,7 @@ h1 {
     #fff;
   background-size: 12px, 100%;
   /* solid border */
-  border: 0.4rem solid #000;
+  border: 2px solid #000;
   /* position relative for the :before pseudo element */
   position: relative;
 }
@@ -69,7 +78,19 @@ h1 {
     z-index: -5;
   }
   
-  #body{
+  .wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .bg-image{
+    position:absolute;
+    width: 100%;
+    height: 250%;
+    top: 0;
+    left:0;
     background-size: cover;
   }
   

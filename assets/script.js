@@ -52,14 +52,14 @@ var images = [
   $(function () {
     var i = 0;
     
-    $('#body').css('background-image', 'url(./assets/images/' + images[i] + ')', 
+    $('.bg-image').css('background-image', 'url(./assets/images/' + images[i] + ')', 
     'background-size', 'cover');
     setInterval (function () {
       i++;
       if (i == images.length) {
         i = 0;
       }
-      $('#body').fadeOut('slow', function (){
+      $('.bg-image').fadeOut('slow', function (){
       $(this).css('background-image', 'url(./assets/images/' + images[i] + ')',
       'background-size', 'cover');
       $(this).fadeIn('slow');
