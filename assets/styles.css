@@ -1,0 +1,79 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+#search-input {
+    width: 70%;
+    padding: 10px;
+    font-size: 20px;
+}
+
+#search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    font-family: "rock salt", cursive;
+    font-size: 14px;
+}
+
+#search-results {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.bubble {
+    max-width: 500px;
+  /* give ample whitespace around and inside of the container */
+  margin: 2rem 0;
+  padding: 0.2rem 1.25rem;
+  text-align: center;
+  font-family: "rock salt", cursive;
+  text-transform: uppercase;
+  font-size: 24px;
+  letter-spacing: 0.2rem;
+  background: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(25)" opacity="0.3" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g  fill="%23250E17"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>'),
+    #fff;
+  background-size: 12px, 100%;
+  /* solid border */
+  border: 0.4rem solid #000;
+  /* position relative for the :before pseudo element */
+  position: relative;
+}
+
+.bubble:before {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    top: 0.15rem;
+    width: 100%;
+    height: 100%;
+    /* with the same texture, but different color, for both the texture and the background */
+    background: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(35)" opacity="1" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="%23250E17"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>'),
+      #000;
+    background-size: 12px, 100%;
+    border: 0.4rem solid #000;
+    z-index: -5;
+  }
+  
+  #body{
+    background-size: cover;
+  }
+  
+/* #divImage { 
+    background-size: cover;
+}*/
+
