@@ -1,6 +1,5 @@
 
 const searchResults = document.getElementById('search-results');
-const directions = document.getElementById('directions');
 const searchName = document.getElementById('search-name');
 
 var startUrl = localStorage.getItem('tempUrl');
@@ -8,9 +7,6 @@ var startUrl = localStorage.getItem('tempUrl');
 var url = "https://floating-headland-95050.herokuapp.com/" + startUrl + "?api_key=871377ac063cfca6e414991a01d6b3fdfce67591&format=json";
 
 searchResults.textContent = "Results may take a few seconds to load...";
-
-// test
-console.log(url);
 
 // call api for selected movie/show
 fetch(url).then(function (response) {
@@ -33,9 +29,6 @@ fetch(url).then(function (response) {
             for(let i = 0; i < tempLength; i++) {
                 var charUrl = "https://floating-headland-95050.herokuapp.com/" + movieResults.results.characters[i].api_detail_url + "?api_key=871377ac063cfca6e414991a01d6b3fdfce67591&format=json&field_list=first_appeared_in_issue,name";
 
-                // test
-                console.log(charUrl);
-
                 // call api for character
                 fetch(charUrl).then(function (response) {
                     if(response.ok) {
@@ -44,19 +37,34 @@ fetch(url).then(function (response) {
                         var issueId = charResults.results.first_appeared_in_issue.api_detail_url.split('issue')[1];
                         var issueUrl = "https://floating-headland-95050.herokuapp.com/https://comicvine.gamespot.com/api/issue" + issueId + "?api_key=871377ac063cfca6e414991a01d6b3fdfce67591&format=json"
 
-                        // test
-                        console.log(issueUrl);
-
                         // create button for each issue listing the character that the issue is tied to
                         var issueItem = document.createElement('button');
-                        issueItem.textContent = "First appearance of " + charResults.results.name;
+                        issueItem.className = 'page-button';
 
+                        var firstIssueTitle = "First appearance of " + charResults.results.name;
+                        issueItem.innerHTML = (firstIssueTitle);
                         // call api for character's first issue
                         fetch(issueUrl).then(function (response) {
                             if(response.ok) {
                                 response.json().then(function (issueResults) {
                                     var issueImage = document.createElement('img');
+                                    issueImage.className = 'the-img'
+                                    
                                     issueImage.setAttribute('src', issueResults.results.image.original_url);
-                                    issueItem.appendChild(issueImage);
+                                    
+                                    var resultEl=document.createElement('div');
+                                    resultEl.className = 'result-content';
+
+                                    resultEl.appendChild(issueImage);
+                                    issueItem.appendChild(resultEl);
                                     searchResults.appendChild(issueItem);
+                                    issueItem.addEventListener('click', function() {
+                                        // add info needed to Google Books API function
+                                        var passToNextPage = [issueResults.results.volume.name, issueResults.results.issue_number];
+                                        localStorage.setItem('comicDets',JSON.stringify(passToNextPage));
+
+                                        // go to books page
+                                        location.replace('GooglebooksAPI.html');
+                                    })
 })}})})}})}})}})
+

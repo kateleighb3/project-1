@@ -5,10 +5,6 @@ const searchName = document.getElementById('search-name');
 var url = localStorage.getItem('tempUrl');
 var nameGiven = url.split('query=')[1];
 
-// test
-console.log(url);
-console.log(nameGiven);
-
 searchName.textContent = "Showing results for: " + nameGiven;
 
 directions.textContent = "Please select your character";
@@ -19,13 +15,11 @@ fetch(url).then(function (response) {
     if(response.ok) {
         response.json().then(function(chars) {
 
-            // test
-            console.log(chars);
-
             searchResults.innerHTML = '';
 
             for(let i = 0; i < chars.results.length; i++) {
                 var charItem = document.createElement('button');
+                charItem.className = 'page-button';
                 if(chars.results[i].real_name) {
                     charItem.textContent = chars.results[i].name + " A.K.A. " + chars.results[i].real_name;
                 }
@@ -34,8 +28,14 @@ fetch(url).then(function (response) {
                 }
             
                 var image = document.createElement('img');
+                image.className = 'the-img';
                 image.setAttribute('src', chars.results[i].image.original_url);
-                charItem.appendChild(image);
+
+                var resultEl = document.createElement('div');
+                resultEl.className = 'result-content';
+
+                resultEl.appendChild(image);
+                charItem.appendChild(resultEl);
                 searchResults.appendChild(charItem);
             }
 
@@ -46,6 +46,5 @@ fetch(url).then(function (response) {
                     localStorage.setItem("tempUrl", chars.results[i].api_detail_url);
 
                     location.replace('char_page.html');
-                    // getCharInfo(chars.results[i].api_detail_url);
                 }, false);
             }())}})}})
